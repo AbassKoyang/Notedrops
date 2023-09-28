@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notedrops - by Abass</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+        <div class="nav__con">
+            <nav class="nav__bar">
+                <a href="#">Notedrops</a>
+                <div class="nav__icons__con">
+                    <button><i class='bx bxs-bell'></i></button>
+                    <button><i class='bx bxs-cog' ></i></button>
+                </div>
+            </nav>
+            <div class="navigation">
+                <button>Notes</button>
+                <button class="taskbutton">Tasks</button>
+            </div>
+        </div>
+        <div class="note__input__con">
+            <input type="text" class="title__input" id="title-input" placeholder="Enter title">
+            <textarea name="" id="note-input" cols="30" rows="10" class="note__input" placeholder="Enter your note here"></textarea>
+            <button class="add__button" id="add-button"><i class="ri-file-copy-line"></i></button>
+        </div>
+        <div class="notes__container" id="note-list">
+
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

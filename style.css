@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@600&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.card{
+    width: 95%;
+    height: 500px;
+    max-width: 500px;
+    padding: 30px;
+    background-color: black;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: scroll;
+}
+.nav__con{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: black;
+}
+
+.nav__bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    border-radius: 10px;
+}
+.nav__bar a{
+    font-size: 28px;
+    color: white;
+    font-family: 'Martian Mono', monospace;
+    font-weight: 600;
+    text-decoration: none;
+}
+.nav__bar .nav__icons__con{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.nav__bar .nav__icons__con button{
+    padding: 0;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.nav__icons__con button i{
+    color: white;
+    font-size: 30px;
+}
+.navigation{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.navigation button{
+    width: 48%;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.navigation .taskbutton{
+    background-color: #202020;
+    color: white;
+}
+.note__input__con{
+    width: 100%;
+    padding: 10px 10px 100px 10px;
+    position: relative;
+    background-color: #202020;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.note__input__con input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.596);
+    outline: none;
+    background-color: #202020;
+    font-family: 'Martian Mono', monospace;
+    color: white;
+}
+.note__input__con textarea{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.596);
+    outline: none;
+    background-color: #202020;
+    color: white;
+}
+.note__input__con button{
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.note{
+    width: 100%;
+    padding: 10px;
+    background-color: #202020;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.note .notes__action{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.596);
+}
+.note h4{
+    font-size: 20px;
+    color: white;
+    font-family: 'Martian Mono', monospace;
+    font-weight: 600;
+    text-decoration: none;
+}
+.note .notes__action .action__con{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 10px;
+}
+.note .notes__action .action__con i{
+    font-size: 25px;
+    color: white;
+}
+.note p{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+@media screen and (min-width:320px) and (max-width:500px) {
+    .navigation button{
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+    .nav__bar a{
+        font-size: 20px;
+    }
+    .nav__icons__con button i{
+        font-size: 20px;
+    }
+    .note .notes__action .action__con i{
+        font-size: 20px;
+        color: white;
+    }
+    .note p{
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+    .note h4{
+        font-size: 18px;
+    }
+}
