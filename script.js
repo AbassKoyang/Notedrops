@@ -82,25 +82,33 @@ addButton.addEventListener("click", ()=>{
     saveNoteToLocalStorage();
 });
 
+
+// Event listener for deleting notes
 noteList.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-button")) {
-        // Remove the HTML element from the DOM
-        const noteElement = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+        const noteElement = e.target.parentElement.parentElement.parentElement.parentElement.parentElement; // Find the closest parent with class "note"
         noteElement.remove();
 
-        // Get the current notes from local storage
-        let notes = JSON.parse(localStorage.getItem("notes")) || [];
-
-        // Find the index of the note to delete based on its title
+        // Get the title of the note to delete
         const noteTitleToDelete = noteElement.querySelector("h4").textContent;
-        const noteIndex = notes.findIndex((note) => note.title === noteTitleToDelete);
 
-        if (noteIndex !== -1) {
-            // Remove the note from the array
-            notes.splice(noteIndex, 1);
-
-            // Update local storage with the modified notes array
-            localStorage.setItem("notes", JSON.stringify(notes));
-        }
+        // Delete the note from local storage
+        deleteNoteFromLocalStorage(noteTitleToDelete);
     }
 });
+
+// Function to delete a note from local storage
+function deleteNoteFromLocalStorage(title) {
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+    // Find the index of the note to delete
+    const noteIndex = notes.findIndex((note) => note.title === title);
+
+    if (noteIndex !== -1) {
+        // Remove the note from the array
+        notes.splice(noteIndex, 1);
+
+        // Update local storage with the modified notes array
+        localStorage.setItem("notes", JSON.stringify(notes));
+    }
+}
