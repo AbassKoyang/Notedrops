@@ -26,40 +26,29 @@ function addNote() {
         `;
         noteList.appendChild(note);
 
-        // Save the note to local storage
-        saveNoteToLocalStorage(noteText);
-
         // Clear the input field
         noteInput.value = "";
         noteTitle.value = "";
     }
-}
+};
 
-// Function to delete a note
-function deleteNote(note) {
-    noteList.removeChild(note);
-    const noteText = note.querySelector("p").textContent;
-    deleteNoteFromLocalStorage(noteText);
-}
-
-// Function to save a note to local storage
-function saveNoteToLocalStorage(noteText) {
+function saveNoteToLocalStorage(noteTitleText, noteText) {
+    // Get existing notes from local storage or initialize an empty array
     let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    notes.push(noteText);
+
+    // Add the new note as an object to the array
+    notes.push({ title: noteTitleText, text: noteText });
+
+    // Save the updated notes array back to local storage
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
-// Function to delete a note from local storage
-function deleteNoteFromLocalStorage(noteText) {
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    notes = notes.filter((note) => note !== noteText);
-    localStorage.setItem("notes", JSON.stringify(notes));
-}
 
-// Function to load notes from local storage
-function loadNotes() {
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    notes.forEach((noteText) => {
+function loadNotesFromLocalStorage() {
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+    // Loop through the notes and create HTML elements for each note
+    notes.forEach((noteText, noteTitleText) => {
         const note = document.createElement("div");
         note.classList.add("note");
         note.innerHTML = `
@@ -69,24 +58,49 @@ function loadNotes() {
             <h4>${noteTitleText}</h4>
                 <div class="action__con">
                     <i class="ri-file-copy-line"></i>
-                    <i class="ri-delete-bin-3-line id="delete-button"></i>
+                    <i class="ri-delete-bin-3-line delete-button delete-button"></i>
                     <i class="ri-more-2-fill"></i>
                 </div>
             </div>
             <p>${noteText}</p>
         </div>
-    </div>
-        `;
+    </div>`
+
+        // Append the note to the noteList
         noteList.appendChild(note);
     });
 }
 
+// Call the function to load notes when the page loads
+window.addEventListener("load", loadNotesFromLocalStorage);
+
+
+
 // Event listeners
-addButton.addEventListener("click", addNote);
+addButton.addEventListener("click", ()=>{
+    addNote();
+    saveNoteToLocalStorage();
+});
 
 noteList.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-button")) {
-        const note = e.target.parentElement.parentElement;
-        deleteNote(note);
+        // Remove the HTML element from the DOM
+        const noteElement = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+        noteElement.remove();
+
+        // Get the current notes from local storage
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+        // Find the index of the note to delete based on its title
+        const noteTitleToDelete = noteElement.querySelector("h4").textContent;
+        const noteIndex = notes.findIndex((note) => note.title === noteTitleToDelete);
+
+        if (noteIndex !== -1) {
+            // Remove the note from the array
+            notes.splice(noteIndex, 1);
+
+            // Update local storage with the modified notes array
+            localStorage.setItem("notes", JSON.stringify(notes));
+        }
     }
 });
