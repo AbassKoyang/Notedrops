@@ -16,14 +16,14 @@ body{
 }
 .card{
     width: 95%;
-    height: 500px;
+    height: 600px;
     max-width: 500px;
-    padding: 30px;
+    padding: 0px 30px;
     background-color: black;
     margin: auto;
     border-radius: 10px;
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .nav__con{
     width: 100%;
@@ -31,14 +31,15 @@ body{
     top: 0;
     z-index: 100;
     background-color: black;
+    padding: 30px 10px;
 }
 
 .nav__bar{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 5px 0px;
     border-radius: 10px;
+    background-color: black;
 }
 .nav__bar a{
     font-size: 28px;
